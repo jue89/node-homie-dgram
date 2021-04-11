@@ -29,6 +29,7 @@ module.exports = async ({port, mcast} = {}) => {
 	await socket.bind(port, mcast);
 
 	return {
+		on: devices.on.bind(devices),
 		get: devices.get.bind(devices),
 		getAll: devices.getAll.bind(devices)
 	};

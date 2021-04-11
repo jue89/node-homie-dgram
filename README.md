@@ -17,6 +17,14 @@ hdpFactory([port[, mcastAddr]]).then((hdpClient) => { ... });
 
 ### Class: HDPClient
 
+#### Event: discover
+
+```js
+hdpClient.on('discover', (hdpDevice) => { ... });
+```
+
+Is fired once a HDPDevice has been discovered.
+
 #### Method: get()
 
 ```js
