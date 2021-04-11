@@ -1,0 +1,29 @@
+{
+  "name": "homie-dgram",
+  "version": "0.0.0",
+  "description": "Homie Datagram Protocol",
+  "main": "index.js",
+  "scripts": {
+    "test": "happiness && jest --verbose",
+    "watch": "jest --watchAll"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jue89/node-homie-dgram.git"
+  },
+  "keywords": [
+    "homie",
+    "homeautomation",
+    "riotos"
+  ],
+  "author": "Juergen Fitschen <me@jue.yt>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jue89/node-homie-dgram/issues"
+  },
+  "homepage": "https://github.com/jue89/node-homie-dgram#readme",
+  "devDependencies": {
+    "happiness": "^10.0.2",
+    "jest": "^26.6.3"
+  }
+}
