@@ -3,6 +3,10 @@
   "version": "0.0.0",
   "description": "Homie Datagram Protocol",
   "main": "index.js",
+  "bin": {
+    "hdp-discover": "./bin/discover",
+    "hdp-getset": "./bin/getset"
+  },
   "scripts": {
     "test": "happiness && jest --verbose",
     "watch": "jest --watchAll"

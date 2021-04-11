@@ -1,0 +1,10 @@
+#!/usr/bin/env node
+
+require('..')().then((client) => {
+	client.on('discover', (device) => {
+		device.get().forEach((endpoint) => {
+			console.log('DISCOVER', device.cpuid, endpoint.name, endpoint.get());
+			endpoint.on('change', (val) => console.log('CHANGE  ', device.cpuid, endpoint.name, val));
+		});
+	});
+});
