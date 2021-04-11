@@ -43,6 +43,14 @@ const hdpDevices = hdpClient.getAll();
 
 * `hdpDevices`: Array of HDPDevice that have been discovered, yet.
 
+#### Method: close()
+
+```js
+hdpClient.close().then(() => { ... });
+```
+
+Closes the network socket.
+
 ### Class: HDPDevice
 
 #### Property: cpuid
