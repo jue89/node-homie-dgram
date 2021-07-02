@@ -8,11 +8,11 @@ This is a client for the *Homie Datagram Protocol (HDP)*. A server implementatio
 
 ```js
 const hdpFactory = require('homie-dgram');
-hdpFactory([port[, mcastAddr]]).then((hdpClient) => { ... });
+hdpFactory([opts]).then((hdpClient) => { ... });
 ```
-
-* `port`: UDP port to be bound. Default: `5001`
-* `mcastAddr`: Multicast group to join. Default: `'ff02::cafe'`
+* `opts` has the following items:
+   * `port`: UDP port to be bound. Default: `5001`
+   * `mcast`: Multicast group to join. Default: `'ff02::cafe'`
 * `hdpClient`: Instance of **HDPClient**
 
 ### Class: HDPClient
