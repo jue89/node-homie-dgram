@@ -10,6 +10,7 @@ const name = process.argv[3];
 const values = process.argv.slice(4).map((v) => parseInt(v));
 
 require('..')().then(async (client) => {
+	client.triggerDiscovery();
 	const device = await client.get(cpuid);
 	const endpoint = device.get(name);
 	if (values.length) {

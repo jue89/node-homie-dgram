@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 require('..')().then((client) => {
+	client.triggerDiscovery();
 	client.on('discover', (device) => {
 		device.get().forEach((endpoint) => {
 			console.log('DISCOVER', device.cpuid, endpoint.name, endpoint.get());
