@@ -25,6 +25,19 @@ hdpClient.on('discover', (hdpDevice) => { ... });
 
 Is fired once a HDPDevice has been discovered.
 
+#### Method: triggerDiscovery()
+
+```js
+hdpClient.triggerDiscovery([opts]);
+```
+
+Triggers discovery by requesting the current state of all reachable HDP devices.
+
+`opts` has the following options:
+* `port`: hdpDevice's port. Default: `5000`
+* `mcast`: Multicast address for the request. Default: `'ff02::1'`.
+* `iface`: Network interface to query. Default: all network interfaces with IPv6 connectivity.
+
 #### Method: get()
 
 ```js
