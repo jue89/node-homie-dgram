@@ -5,11 +5,15 @@ if (process.argv.length < 4) {
 	process.exit(1);
 }
 
+const iface = process.env.IFACE;
+const mcast = process.env.MCAST;
+const port = process.env.PORT;
+
 const cpuid = process.argv[2];
 const name = process.argv[3];
 const values = process.argv.slice(4).map((v) => parseInt(v));
 
-require('..')().then(async (client) => {
+require('..')({iface, mcast, port}).then((client) => {
 	client.triggerDiscovery();
 	const device = await client.get(cpuid);
 	const endpoint = device.get(name);

@@ -1,6 +1,10 @@
 #!/usr/bin/env node
 
-require('..')().then((client) => {
+const iface = process.env.IFACE;
+const mcast = process.env.MCAST;
+const port = process.env.PORT;
+
+require('..')({iface, mcast, port}).then((client) => {
 	client.triggerDiscovery();
 	client.on('discover', (device) => {
 		device.get().forEach((endpoint) => {
