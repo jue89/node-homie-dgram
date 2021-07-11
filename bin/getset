@@ -13,7 +13,7 @@ const cpuid = process.argv[2];
 const name = process.argv[3];
 const values = process.argv.slice(4).map((v) => parseInt(v));
 
-require('..')({iface, mcast, port}).then((client) => {
+require('..')({iface, mcast, port}).then(async (client) => {
 	client.triggerDiscovery();
 	const device = await client.get(cpuid);
 	const endpoint = device.get(name);
