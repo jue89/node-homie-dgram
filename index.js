@@ -1,4 +1,4 @@
-module.exports = async ({port, mcast} = {}) => {
+module.exports = async ({port, mcast, iface} = {}) => {
 	const {PktIn, PktOutStateRequest, PktOutInfoRequest, PktOutStateSet} = require('./lib/pkt.js');
 
 	function parsePkt (payload) {
@@ -20,13 +20,14 @@ module.exports = async ({port, mcast} = {}) => {
 		socket.send(pkt);
 	}
 
-	function triggerDiscovery ({port, mcast, iface} = {}) {
-		if (iface === undefined) {
-			const ifaces = getIfacesWithIPv6();
-			ifaces.forEach((iface) => triggerDiscovery({port, mcast, iface}));
+	function triggerDiscovery ({port, mcast, discoverIface} = {}) {
+		if (iface) discoverIface = iface;
+		if (discoverIface === undefined) {
+			const ifaces = Object.keys(getIfacesWithIPv6());
+			ifaces.forEach((discoverIface) => triggerDiscovery({port, mcast, discoverIface}));
 		} else {
 			const pkt = new PktOutStateRequest();
-			socket.send(pkt, {port: port || 5000, address: `${mcast || 'ff02::1'}%${iface}`});
+			socket.send(pkt, {port: port || 5000, address: `${mcast || 'ff02::1'}%${discoverIface}`});
 		}
 	}
 
@@ -36,7 +37,7 @@ module.exports = async ({port, mcast} = {}) => {
 
 	socket.on('pkt', (pkt) => devices.handlePkt(pkt));
 
-	await socket.bind(port, mcast);
+	await socket.bind({port, mcast, iface});
 
 	return {
 		triggerDiscovery,
